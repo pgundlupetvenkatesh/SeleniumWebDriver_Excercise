@@ -18,7 +18,7 @@ public class SaveCallReport extends SetUpTearDown  {
 	@Test
 	public void login() {												//Logging into the application with valid username and password.
 		LoginPage loginObj = new LoginPage(ie);
-		loginObj.loginToapp("bb10@bb2.com", "bugb1234");
+		loginObj.loginToapp("****", "****");
 		ie.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	//Using implicit timeout for 10 secs so that the home page loads complete.
 	}
 	
