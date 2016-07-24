@@ -23,18 +23,6 @@ public class LoginPage {
 	By custom_domain = By.id("mydomainLink");
 	By try_free = By.id("signup_link");
 	
-	public void userName(String un) {
-		ie.findElement(user_name).sendKeys(un);
-	}
-	
-	public void password(String pwd) {
-		ie.findElement(password).sendKeys(pwd);
-	}
-	
-	public void logIn_button() {
-		ie.findElement(login).click();
-	}
-	
 	public void rememberMe() {
 		ie.findElement(remember_me).click();
 	}
@@ -52,9 +40,9 @@ public class LoginPage {
 	}
 	
 	public void loginToapp(String un, String pwd) {
-		userName(un);
-		password(pwd);
-		logIn_button();
+		ie.findElement(user_name).sendKeys(un);
+		ie.findElement(password).sendKeys(pwd);
+		ie.findElement(login).click();
 	}
 
 }

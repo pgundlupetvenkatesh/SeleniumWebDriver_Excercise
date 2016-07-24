@@ -1,64 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="3" failed="0" total="3" passed="0">
+<testng-results skipped="0" failed="0" total="5" passed="5">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="94" started-at="2016-07-18T03:28:01Z" finished-at="2016-07-18T03:28:01Z">
+  <suite name="Default suite" duration-ms="88460" started-at="2016-07-24T10:14:59Z" finished-at="2016-07-24T10:16:28Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="94" started-at="2016-07-18T03:28:01Z" finished-at="2016-07-18T03:28:01Z">
+    <test name="Default test" duration-ms="88460" started-at="2016-07-24T10:14:59Z" finished-at="2016-07-24T10:16:28Z">
       <class name="CallReport.SaveCallReport">
-        <test-method status="PASS" signature="testConfig()[pri:0, instance:CallReport.SaveCallReport@69818eaf]" name="testConfig" is-config="true" duration-ms="6496" started-at="2016-07-17T20:27:54Z" finished-at="2016-07-17T20:28:01Z">
+        <test-method status="PASS" signature="initializeBrowser()[pri:0, instance:CallReport.SaveCallReport@71ddd078]" name="initializeBrowser" is-config="true" duration-ms="4285" started-at="2016-07-24T03:14:55Z" finished-at="2016-07-24T03:14:59Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testConfig -->
-        <test-method status="FAIL" signature="InvokeUrl(java.lang.String)[pri:0, instance:CallReport.SaveCallReport@69818eaf]" name="InvokeUrl" is-config="true" duration-ms="0" started-at="2016-07-17T20:28:01Z" finished-at="2016-07-17T20:28:01Z">
-          <exception class="org.testng.TestNGException">
-            <message>
-              <![CDATA[
-Method InvokeUrl requires 1 parameters but 0 were supplied in the @Configuration annotation.]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.testng.TestNGException: 
-Method InvokeUrl requires 1 parameters but 0 were supplied in the @Configuration annotation.
-	at org.testng.internal.Parameters.checkParameterTypes(Parameters.java:198)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:134)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:373)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:86)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:199)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:138)
-	at org.testng.TestRunner.beforeRun(TestRunner.java:641)
-	at org.testng.TestRunner.run(TestRunner.java:609)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
-	at org.testng.TestNG.run(TestNG.java:1057)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.testng.TestNGException -->
+        </test-method> <!-- initializeBrowser -->
+        <test-method status="PASS" signature="InvokeUrl()[pri:0, instance:CallReport.SaveCallReport@71ddd078]" name="InvokeUrl" is-config="true" duration-ms="2001" started-at="2016-07-24T03:14:59Z" finished-at="2016-07-24T03:15:01Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- InvokeUrl -->
-        <test-method status="SKIP" signature="login()[pri:0, instance:CallReport.SaveCallReport@69818eaf]" name="login" duration-ms="1" started-at="2016-07-17T20:28:01Z" finished-at="2016-07-17T20:28:01Z">
+        <test-method status="PASS" signature="login()[pri:0, instance:CallReport.SaveCallReport@71ddd078]" name="login" duration-ms="3049" started-at="2016-07-24T03:15:01Z" finished-at="2016-07-24T03:15:04Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="SKIP" signature="saveCallRreport()[pri:0, instance:CallReport.SaveCallReport@69818eaf]" name="saveCallRreport" duration-ms="0" started-at="2016-07-17T20:28:01Z" depends-on-methods="CallReport.SaveCallReport.login" finished-at="2016-07-17T20:28:01Z">
+        <test-method status="PASS" signature="homePage()[pri:0, instance:CallReport.SaveCallReport@71ddd078]" name="homePage" duration-ms="7855" started-at="2016-07-24T03:15:04Z" depends-on-methods="CallReport.SaveCallReport.login" finished-at="2016-07-24T03:15:12Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- homePage -->
+        <test-method status="PASS" signature="accountHolder()[pri:0, instance:CallReport.SaveCallReport@71ddd078]" name="accountHolder" duration-ms="11071" started-at="2016-07-24T03:15:12Z" depends-on-methods="CallReport.SaveCallReport.homePage" finished-at="2016-07-24T03:15:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- accountHolder -->
+        <test-method status="PASS" signature="saveCallRreport()[pri:0, instance:CallReport.SaveCallReport@71ddd078]" name="saveCallRreport" duration-ms="61403" started-at="2016-07-24T03:15:23Z" depends-on-methods="CallReport.SaveCallReport.accountHolder" finished-at="2016-07-24T03:16:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- saveCallRreport -->
-        <test-method status="SKIP" signature="logout()[pri:0, instance:CallReport.SaveCallReport@69818eaf]" name="logout" duration-ms="0" started-at="2016-07-17T20:28:01Z" description="Logging out from Veeva CRM" depends-on-methods="CallReport.SaveCallReport.saveCallRreport" finished-at="2016-07-17T20:28:01Z">
+        <test-method status="PASS" signature="logout()[pri:0, instance:CallReport.SaveCallReport@71ddd078]" name="logout" duration-ms="3036" started-at="2016-07-24T03:16:25Z" description="Logging out from Veeva CRM" depends-on-methods="CallReport.SaveCallReport.saveCallRreport" finished-at="2016-07-24T03:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logout -->
-        <test-method status="SKIP" signature="Exit()[pri:0, instance:CallReport.SaveCallReport@69818eaf]" name="Exit" is-config="true" duration-ms="0" started-at="2016-07-17T20:28:01Z" finished-at="2016-07-17T20:28:01Z">
+        <test-method status="PASS" signature="Exit()[pri:0, instance:CallReport.SaveCallReport@71ddd078]" name="Exit" is-config="true" duration-ms="1143" started-at="2016-07-24T03:16:28Z" finished-at="2016-07-24T03:16:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Exit -->
