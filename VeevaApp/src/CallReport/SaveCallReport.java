@@ -2,6 +2,7 @@ package CallReport;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -9,33 +10,41 @@ import com.veeva.pages.AccountsPage;
 import com.veeva.pages.AddMassPromoCall;
 import com.veeva.pages.HomePage;
 import com.veeva.pages.LoginPage;
+import com.veeva.pages.LoginPagePF;
 import com.veeva.pages.Logout;
 
 public class SaveCallReport extends SetUpTearDown  {
-	@Test
+/*	@Test
 	public void login() {												//Logging into the application with valid username and password.
-		LoginPage loginObj = new LoginPage(ie);
-		loginObj.loginToapp("***", "***");
-		ie.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	//Using implicit timeout for 10 secs so that the home page loads complete.
+		LoginPage loginObj = new LoginPage(driver);
+		loginObj.loginToapp("*****", "******");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	//Using implicit timeout for 10 secs so that the home page loads complete.
+	}*/
+	
+	@Test
+	public void login() {
+		LoginPagePF obj = PageFactory.initElements(driver, LoginPagePF.class);
+		obj.loginToapp("****", "****");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
 	@Test (dependsOnMethods={"login"})
 	public void homePage() {
-		HomePage hmpgeObj = new HomePage(ie);
+		HomePage hmpgeObj = new HomePage(driver);
 		hmpgeObj.myAccountsMenu();										//Clicking the My Account tab
 	}
 	
 	@Test (dependsOnMethods={"homePage"})
 	public void accountHolder() {
-		AccountsPage accObj = new AccountsPage(ie);
+		AccountsPage accObj = new AccountsPage(driver);
 		accObj.accountName();											//Clicking Mark Canter in the side window panel
 		accObj.action();												//Click on the Record a Call button.
-		ie.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 	
 	@Test (dependsOnMethods={"accountHolder"})
 	public void saveCallRreport() throws InterruptedException {			//This function creates a new call report  
-		AddMassPromoCall promoCallObj = new AddMassPromoCall(ie);
+		AddMassPromoCall promoCallObj = new AddMassPromoCall(driver);
 		promoCallObj.recordType("Mass Add Promo Call");
 		Thread.sleep(20000);
 		String checkBox1 = promoCallObj.checkboxDetails("Cholecap");	//click Cholecap & Labrinone check-box
@@ -54,7 +63,7 @@ public class SaveCallReport extends SetUpTearDown  {
 	
 	@Test(dependsOnMethods={"saveCallRreport"}, description = "Logging out from Veeva CRM")
 	public void logout() {
-		Logout logoutObj = new Logout(ie);
+		Logout logoutObj = new Logout(driver);
 		logoutObj.userLogout();
 	}
 }

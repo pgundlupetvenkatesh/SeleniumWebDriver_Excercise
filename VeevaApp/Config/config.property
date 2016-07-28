@@ -1,2 +1,3 @@
 IEDriver=C:\\IEDriverServer.exe
+ChromeDriver=C:\\chromedriver.exe
 URL=https://login.salesforce.com/

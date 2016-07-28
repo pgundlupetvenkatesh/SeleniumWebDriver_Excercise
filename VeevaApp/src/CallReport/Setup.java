@@ -18,8 +18,12 @@ public class Setup {
 		}
 	}
 	
-	public String getDriver() {
+	public String getIEDriver() {
 		return pro.getProperty("IEDriver");
+	}
+	
+	public String getChromeDriver() {
+		return pro.getProperty("ChromeDriver");
 	}
 	
 	public String appUrl() {
