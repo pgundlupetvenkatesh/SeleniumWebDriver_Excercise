@@ -3,15 +3,11 @@ package CallReport;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
-import com.veeva.pages.LoginPagePF;
-
 public class SetUpTearDown {
-	//public WebDriver ie;
 	public WebDriver driver;
 	Setup obj = new Setup();
 	
@@ -27,7 +23,6 @@ public class SetUpTearDown {
 		else {
 			System.out.println("Possible Defect - Enter valid browser name.");
 		}
-		
 		return driver;
 	}
 	
