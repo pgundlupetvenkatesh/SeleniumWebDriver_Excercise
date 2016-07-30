@@ -16,7 +16,7 @@ public class SaveCallReport extends SetUpTearDown  {
 	@Test
 	public void login() {
 		LoginPagePF obj = PageFactory.initElements(driver, LoginPagePF.class);
-		obj.loginToapp("bb10@bb2.com", "bugb1234");
+		obj.loginToapp("****", "*****");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
