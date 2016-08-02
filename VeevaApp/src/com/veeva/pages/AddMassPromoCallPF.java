@@ -16,9 +16,9 @@ import org.openqa.selenium.support.ui.Select;
  *
  */
 public class AddMassPromoCallPF {
-		WebDriver ie;
-		public AddMassPromoCallPF(WebDriver driver) {
-			this.ie = driver;
+		WebDriver driver;
+		public AddMassPromoCallPF(WebDriver lDriver) {
+			this.driver = lDriver;
 		}
 		
 		@FindBy(how = How.ID, using = "RecordTypeId") WebElement record_type;

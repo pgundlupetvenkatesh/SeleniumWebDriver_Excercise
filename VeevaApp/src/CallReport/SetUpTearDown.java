@@ -1,5 +1,7 @@
 package CallReport;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -40,5 +42,16 @@ public class SetUpTearDown {
 	@AfterSuite
 	public void Exit() {
 		driver.quit();
+	}
+	
+	public boolean implicitTime(int time) {
+		try {
+			driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
+			System.out.println("Waited for " + time + " Seconds.");
+		}
+		catch(Exception e) {
+			return false;
+		}
+		return true;
 	}
 }

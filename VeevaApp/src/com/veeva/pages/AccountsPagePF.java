@@ -13,13 +13,13 @@ import org.openqa.selenium.support.How;
  *
  */
 public class AccountsPagePF {
-		WebDriver ie;
-		public AccountsPagePF(WebDriver driver) {
-			this.ie = driver;
+		WebDriver driver;
+		public AccountsPagePF(WebDriver lDriver) {
+			this.driver = lDriver;
 		}
 		
-		@FindBy(how = How.XPATH, using = ".//a[@class = 'personaccountMru']") WebElement accountName;
-		@FindBy(how = How.NAME, using = "record_a_call") WebElement record_call; 
+		@FindBy(how = How.XPATH, using = ".//a[@class = 'personaccountMru']") private WebElement accountName;
+		@FindBy(how = How.NAME, using = "record_a_call") private WebElement record_call; 
 		
 		public void accountName() {
 			accountName.click();

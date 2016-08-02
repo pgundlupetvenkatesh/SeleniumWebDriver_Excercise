@@ -16,17 +16,17 @@ import org.openqa.selenium.support.How;
  *
  */
 public class LogoutPF {
-		WebDriver ie;
-		public LogoutPF(WebDriver driver) {
-			this.ie = driver;
+		WebDriver driver;
+		public LogoutPF(WebDriver lDriver) {
+			this.driver = lDriver;
 		}
 		
-		@FindBy(how = How.ID, using = "userNav") @CacheLookup WebElement user;
-		@FindBy(how = How.XPATH, using = ".//a[@title='Logout']") @CacheLookup WebElement logout_link;
+		@FindBy(how = How.ID, using = "userNav") @CacheLookup private WebElement user;
+		@FindBy(how = How.XPATH, using = ".//a[@title='Logout']") @CacheLookup private WebElement logout_link;
 		
 		public void userLogout() {
 			user.click();
-			ie.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 			logout_link.click();
 		}
 }

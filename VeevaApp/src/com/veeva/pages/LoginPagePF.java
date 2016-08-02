@@ -15,20 +15,19 @@ import org.openqa.selenium.support.How;
  */
 public class LoginPagePF {
 	
-	WebDriver ie;
-	public LoginPagePF(WebDriver driver) {
-		this.ie = driver;
+	WebDriver driver;
+	public LoginPagePF(WebDriver lDriver) {
+		this.driver = lDriver;
 	}
 	
-	@FindBy(how = How.ID, using="username") @CacheLookup WebElement user_name;
-	@FindBy(how = How.ID, using="password") @CacheLookup WebElement password;
-	@FindBy(how = How.ID, using="Login") @CacheLookup WebElement login;
-	@FindBy(how = How.ID, using="rememberUn") WebElement remember_me;
+	@FindBy(how = How.ID, using="username") @CacheLookup private WebElement user_name;
+	@FindBy(how = How.ID, using="password") @CacheLookup private WebElement password;
+	@FindBy(how = How.ID, using="Login") @CacheLookup private WebElement login;
+	@FindBy(how = How.ID, using="rememberUn") private WebElement remember_me;
 	
 	public void loginToapp(String un, String pwd) {
 		user_name.sendKeys(un);
 		password.sendKeys(pwd);
 		login.click();
 	}
-
 }
