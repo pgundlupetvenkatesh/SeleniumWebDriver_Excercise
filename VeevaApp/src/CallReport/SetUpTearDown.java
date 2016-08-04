@@ -18,12 +18,9 @@ public class SetUpTearDown {
 			System.setProperty("webdriver.chrome.driver", obj.getChromeDriver());
 			driver = new ChromeDriver();
 		}
-		else if(browserName.equalsIgnoreCase("ie")) {
+		else {
 			System.setProperty("webdriver.ie.driver", obj.getIEDriver());
 			driver = new InternetExplorerDriver();
-		}
-		else {
-			System.out.println("Possible Defect - Enter valid browser name.");
 		}
 		return driver;
 	}

@@ -26,7 +26,9 @@ public class LoginPagePF {
 	@FindBy(how = How.ID, using="rememberUn") private WebElement remember_me;
 	
 	public void loginToapp(String un, String pwd) {
+		user_name.clear();
 		user_name.sendKeys(un);
+		password.clear();
 		password.sendKeys(pwd);
 		login.click();
 	}

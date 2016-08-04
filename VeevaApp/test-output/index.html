@@ -48,7 +48,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-Default_suite">
-                    <span>C:\Users\Pratik\AppData\Local\Temp\testng-eclipse--1631496119\testng-customsuite.xml</span>
+                    <span>C:\Users\Pratik\AppData\Local\Temp\testng-eclipse--1316734211\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -90,7 +90,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">5 methods, 1 failed,  3 skipped,  1 passed</span>
+                    <span class="method-stats">5 methods, 1 failed,  1 skipped,  3 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -101,7 +101,7 @@
                     <div class="method-list-content failed suite-Default_suite">
                       <span>
                         <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="CallReport.SaveCallReport" hash-for-method="homePage">homePage</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="CallReport.SaveCallReport" hash-for-method="saveCallRreport">saveCallRreport</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Default_suite -->
@@ -115,17 +115,7 @@
                     <div class="method-list-content skipped suite-Default_suite">
                       <span>
                         <img width="3%" src="skipped.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="CallReport.SaveCallReport" hash-for-method="accountHolder">accountHolder</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="skipped.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="CallReport.SaveCallReport" hash-for-method="logout">logout</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="skipped.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="CallReport.SaveCallReport" hash-for-method="saveCallRreport">saveCallRreport</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content skipped suite-Default_suite -->
@@ -137,6 +127,16 @@
                       <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
                     </span>
                     <div class="method-list-content passed suite-Default_suite">
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="CallReport.SaveCallReport" hash-for-method="accountHolder">accountHolder</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="CallReport.SaveCallReport" hash-for-method="homePage">homePage</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="CallReport.SaveCallReport" hash-for-method="login">login</a> <!-- method navigator-link -->
@@ -162,15 +162,34 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="homePage">
-                  </a> <!-- homePage -->
-                  <span class="method-name">homePage</span>
-                  <div class="stack-trace">java.lang.AssertionError: Possible defect - Home page title mismatch. expected [Salesforce - Enterprise Edition] but found []
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:494)
-	at org.testng.Assert.assertEquals(Assert.java:123)
-	at org.testng.Assert.assertEquals(Assert.java:176)
-	at CallReport.SaveCallReport.homePage(SaveCallReport.java:26)
+                  <a name="saveCallRreport">
+                  </a> <!-- saveCallRreport -->
+                  <span class="method-name">saveCallRreport</span>
+                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: Unable to find element with xpath == //span/select[@ng-model=&apos;discussion.Product_vod__c&apos;]/option[2][@selected=&apos;selected&apos;] (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 30.09 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.45.0&apos;, revision: &apos;32a636c&apos;, time: &apos;2015-03-05 22:01:35&apos;
+System info: host: &apos;Pratik&apos;, ip: &apos;192.168.17.1&apos;, os.name: &apos;Windows 8&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.2&apos;, java.version: &apos;1.7.0_25&apos;
+*** Element info: {Using=xpath, value=//span/select[@ng-model=&apos;discussion.Product_vod__c&apos;]/option[2][@selected=&apos;selected&apos;]}
+Session ID: b5705680-71b6-4a3a-bff9-0adbb21e9c10
+Driver info: org.openqa.selenium.ie.InternetExplorerDriver
+Capabilities [{platform=WINDOWS, javascriptEnabled=true, elementScrollBehavior=0, ignoreZoomSetting=false, enablePersistentHover=true, ie.ensureCleanSession=false, browserName=internet explorer, enableElementCacheCleanup=true, ie.enableFullPageScreenshot=true, unexpectedAlertBehaviour=dismiss, ie.fileUploadDialogTimeout=3000, ie.forceShellWindowsApi=false, version=11, pageLoadStrategy=normal, ignoreProtectedModeSettings=false, requireWindowFocus=false, initialBrowserUrl=http://localhost:15486/, ie.forceCreateProcessApi=false, nativeEvents=true, browserAttachTimeout=0, ie.browserCommandLineSwitches=}]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:449)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:357)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:59)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:37)
+	at com.sun.proxy.$Proxy10.getText(Unknown Source)
+	at com.veeva.pages.AddMassPromoCallPF.productDropdown(AddMassPromoCallPF.java:72)
+	at CallReport.SaveCallReport.saveCallRreport(SaveCallReport.java:46)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -209,25 +228,11 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="accountHolder">
-                  </a> <!-- accountHolder -->
-                  <span class="method-name">accountHolder</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
                   <a name="logout">
                   </a> <!-- logout -->
                   <span class="method-name">logout</span>
                   <em>
 (Logging out from Veeva CRM)                  </em>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="saveCallRreport">
-                  </a> <!-- saveCallRreport -->
-                  <span class="method-name">saveCallRreport</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -240,6 +245,20 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
+                  <a name="accountHolder">
+                  </a> <!-- accountHolder -->
+                  <span class="method-name">accountHolder</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="homePage">
+                  </a> <!-- homePage -->
+                  <span class="method-name">homePage</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
                   <a name="login">
                   </a> <!-- login -->
                   <span class="method-name">login</span>
@@ -250,7 +269,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\Pratik\AppData\Local\Temp\testng-eclipse--1631496119\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\Pratik\AppData\Local\Temp\testng-eclipse--1316734211\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -301,21 +320,21 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(5);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'login')
+data.setCell(0, 1, 'saveCallRreport')
 data.setCell(0, 2, 'CallReport.SaveCallReport')
-data.setCell(0, 3, 3890);
+data.setCell(0, 3, 76059);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'homePage')
+data.setCell(1, 1, 'accountHolder')
 data.setCell(1, 2, 'CallReport.SaveCallReport')
-data.setCell(1, 3, 30);
+data.setCell(1, 3, 17142);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'accountHolder')
+data.setCell(2, 1, 'homePage')
 data.setCell(2, 2, 'CallReport.SaveCallReport')
-data.setCell(2, 3, 1);
+data.setCell(2, 3, 14882);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'saveCallRreport')
+data.setCell(3, 1, 'login')
 data.setCell(3, 2, 'CallReport.SaveCallReport')
-data.setCell(3, 3, 1);
+data.setCell(3, 3, 5933);
 data.setCell(4, 0, 4)
 data.setCell(4, 1, 'logout')
 data.setCell(4, 2, 'CallReport.SaveCallReport')
@@ -324,7 +343,7 @@ window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 3 seconds</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -357,21 +376,29 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="configuration-test before">
                 <span class="method-name">InvokeUrl</span>
-                <span class="method-start">8749 ms</span>
+                <span class="method-start">21330 ms</span>
               </div> <!-- configuration-test before -->
               <div class="test-method">
                 <span class="method-name">login</span>
-                <span class="method-start">10684 ms</span>
+                <span class="method-start">33750 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">homePage</span>
+                <span class="method-start">39688 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">accountHolder</span>
+                <span class="method-start">54573 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">homePage</span>
-                <span class="method-start">14580 ms</span>
+                <span class="method-name">saveCallRreport</span>
+                <span class="method-start">71718 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-suite after">
                 <span class="method-name">Exit</span>
-                <span class="method-start">14741 ms</span>
+                <span class="method-start">148531 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

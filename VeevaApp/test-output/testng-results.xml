@@ -1,36 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="3" failed="1" total="5" passed="1">
+<testng-results skipped="1" failed="1" total="5" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="5895" started-at="2016-08-02T08:23:04Z" finished-at="2016-08-02T08:23:10Z">
+  <suite name="Default suite" duration-ms="126504" started-at="2016-08-03T07:11:15Z" finished-at="2016-08-03T07:13:22Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="5895" started-at="2016-08-02T08:23:04Z" finished-at="2016-08-02T08:23:10Z">
+    <test name="Default test" duration-ms="126504" started-at="2016-08-03T07:11:15Z" finished-at="2016-08-03T07:13:22Z">
       <class name="CallReport.SaveCallReport">
-        <test-method status="PASS" signature="initializeBrowser()[pri:0, instance:CallReport.SaveCallReport@2f84540b]" name="initializeBrowser" is-config="true" duration-ms="8744" started-at="2016-08-02T01:22:55Z" finished-at="2016-08-02T01:23:04Z">
+        <test-method status="PASS" signature="initializeBrowser()[pri:0, instance:CallReport.SaveCallReport@2f84540b]" name="initializeBrowser" is-config="true" duration-ms="21326" started-at="2016-08-03T00:10:54Z" finished-at="2016-08-03T00:11:15Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializeBrowser -->
-        <test-method status="PASS" signature="InvokeUrl()[pri:0, instance:CallReport.SaveCallReport@2f84540b]" name="InvokeUrl" is-config="true" duration-ms="1906" started-at="2016-08-02T01:23:04Z" finished-at="2016-08-02T01:23:06Z">
+        <test-method status="PASS" signature="InvokeUrl()[pri:0, instance:CallReport.SaveCallReport@2f84540b]" name="InvokeUrl" is-config="true" duration-ms="12341" started-at="2016-08-03T00:11:15Z" finished-at="2016-08-03T00:11:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- InvokeUrl -->
-        <test-method status="PASS" signature="login()[pri:0, instance:CallReport.SaveCallReport@2f84540b]" name="login" duration-ms="3890" started-at="2016-08-02T01:23:06Z" finished-at="2016-08-02T01:23:10Z">
+        <test-method status="PASS" signature="login()[pri:0, instance:CallReport.SaveCallReport@2f84540b]" name="login" duration-ms="5933" started-at="2016-08-03T00:11:28Z" finished-at="2016-08-03T00:11:34Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="FAIL" signature="homePage()[pri:0, instance:CallReport.SaveCallReport@2f84540b]" name="homePage" duration-ms="30" started-at="2016-08-02T01:23:10Z" depends-on-methods="CallReport.SaveCallReport.login" finished-at="2016-08-02T01:23:10Z">
-          <exception class="java.lang.AssertionError">
+        <test-method status="PASS" signature="homePage()[pri:0, instance:CallReport.SaveCallReport@2f84540b]" name="homePage" duration-ms="14882" started-at="2016-08-03T00:11:34Z" depends-on-methods="CallReport.SaveCallReport.login" finished-at="2016-08-03T00:11:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- homePage -->
+        <test-method status="PASS" signature="accountHolder()[pri:0, instance:CallReport.SaveCallReport@2f84540b]" name="accountHolder" duration-ms="17142" started-at="2016-08-03T00:11:49Z" depends-on-methods="CallReport.SaveCallReport.homePage" finished-at="2016-08-03T00:12:06Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- accountHolder -->
+        <test-method status="FAIL" signature="saveCallRreport()[pri:0, instance:CallReport.SaveCallReport@2f84540b]" name="saveCallRreport" duration-ms="76059" started-at="2016-08-03T00:12:06Z" depends-on-methods="CallReport.SaveCallReport.accountHolder" finished-at="2016-08-03T00:13:22Z">
+          <exception class="org.openqa.selenium.NoSuchElementException">
             <message>
-              <![CDATA[Possible defect - Home page title mismatch. expected [Salesforce - Enterprise Edition] but found []]]>
+              <![CDATA[Unable to find element with xpath == //span/select[@ng-model='discussion.Product_vod__c']/option[2][@selected='selected'] (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 30.09 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.45.0', revision: '32a636c', time: '2015-03-05 22:01:35'
+System info: host: 'Pratik', ip: '192.168.17.1', os.name: 'Windows 8', os.arch: 'amd64', os.version: '6.2', java.version: '1.7.0_25'
+*** Element info: {Using=xpath, value=//span/select[@ng-model='discussion.Product_vod__c']/option[2][@selected='selected']}
+Session ID: b5705680-71b6-4a3a-bff9-0adbb21e9c10
+Driver info: org.openqa.selenium.ie.InternetExplorerDriver
+Capabilities [{platform=WINDOWS, javascriptEnabled=true, elementScrollBehavior=0, ignoreZoomSetting=false, enablePersistentHover=true, ie.ensureCleanSession=false, browserName=internet explorer, enableElementCacheCleanup=true, ie.enableFullPageScreenshot=true, unexpectedAlertBehaviour=dismiss, ie.fileUploadDialogTimeout=3000, ie.forceShellWindowsApi=false, version=11, pageLoadStrategy=normal, ignoreProtectedModeSettings=false, requireWindowFocus=false, initialBrowserUrl=http://localhost:15486/, ie.forceCreateProcessApi=false, nativeEvents=true, browserAttachTimeout=0, ie.browserCommandLineSwitches=}]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Possible defect - Home page title mismatch. expected [Salesforce - Enterprise Edition] but found []
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:494)
-	at org.testng.Assert.assertEquals(Assert.java:123)
-	at org.testng.Assert.assertEquals(Assert.java:176)
-	at CallReport.SaveCallReport.homePage(SaveCallReport.java:26)
+              <![CDATA[org.openqa.selenium.NoSuchElementException: Unable to find element with xpath == //span/select[@ng-model='discussion.Product_vod__c']/option[2][@selected='selected'] (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 30.09 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.45.0', revision: '32a636c', time: '2015-03-05 22:01:35'
+System info: host: 'Pratik', ip: '192.168.17.1', os.name: 'Windows 8', os.arch: 'amd64', os.version: '6.2', java.version: '1.7.0_25'
+*** Element info: {Using=xpath, value=//span/select[@ng-model='discussion.Product_vod__c']/option[2][@selected='selected']}
+Session ID: b5705680-71b6-4a3a-bff9-0adbb21e9c10
+Driver info: org.openqa.selenium.ie.InternetExplorerDriver
+Capabilities [{platform=WINDOWS, javascriptEnabled=true, elementScrollBehavior=0, ignoreZoomSetting=false, enablePersistentHover=true, ie.ensureCleanSession=false, browserName=internet explorer, enableElementCacheCleanup=true, ie.enableFullPageScreenshot=true, unexpectedAlertBehaviour=dismiss, ie.fileUploadDialogTimeout=3000, ie.forceShellWindowsApi=false, version=11, pageLoadStrategy=normal, ignoreProtectedModeSettings=false, requireWindowFocus=false, initialBrowserUrl=http://localhost:15486/, ie.forceCreateProcessApi=false, nativeEvents=true, browserAttachTimeout=0, ie.browserCommandLineSwitches=}]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:449)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:357)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:59)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:37)
+	at com.sun.proxy.$Proxy10.getText(Unknown Source)
+	at com.veeva.pages.AddMassPromoCallPF.productDropdown(AddMassPromoCallPF.java:72)
+	at CallReport.SaveCallReport.saveCallRreport(SaveCallReport.java:46)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -57,23 +92,15 @@
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- homePage -->
-        <test-method status="SKIP" signature="accountHolder()[pri:0, instance:CallReport.SaveCallReport@2f84540b]" name="accountHolder" duration-ms="1" started-at="2016-08-02T01:23:10Z" depends-on-methods="CallReport.SaveCallReport.homePage" finished-at="2016-08-02T01:23:10Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- accountHolder -->
-        <test-method status="SKIP" signature="saveCallRreport()[pri:0, instance:CallReport.SaveCallReport@2f84540b]" name="saveCallRreport" duration-ms="1" started-at="2016-08-02T01:23:10Z" depends-on-methods="CallReport.SaveCallReport.accountHolder" finished-at="2016-08-02T01:23:10Z">
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- saveCallRreport -->
-        <test-method status="SKIP" signature="logout()[pri:0, instance:CallReport.SaveCallReport@2f84540b]" name="logout" duration-ms="1" started-at="2016-08-02T01:23:10Z" description="Logging out from Veeva CRM" depends-on-methods="CallReport.SaveCallReport.saveCallRreport" finished-at="2016-08-02T01:23:10Z">
+        <test-method status="SKIP" signature="logout()[pri:0, instance:CallReport.SaveCallReport@2f84540b]" name="logout" duration-ms="1" started-at="2016-08-03T00:13:22Z" description="Logging out from Veeva CRM" depends-on-methods="CallReport.SaveCallReport.saveCallRreport" finished-at="2016-08-03T00:13:22Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logout -->
-        <test-method status="PASS" signature="Exit()[pri:0, instance:CallReport.SaveCallReport@2f84540b]" name="Exit" is-config="true" duration-ms="1144" started-at="2016-08-02T01:23:10Z" finished-at="2016-08-02T01:23:11Z">
+        <test-method status="PASS" signature="Exit()[pri:0, instance:CallReport.SaveCallReport@2f84540b]" name="Exit" is-config="true" duration-ms="1535" started-at="2016-08-03T00:13:22Z" finished-at="2016-08-03T00:13:24Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Exit -->

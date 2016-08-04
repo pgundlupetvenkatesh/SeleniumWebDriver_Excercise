@@ -15,6 +15,7 @@ import org.testng.Assert;
  */
 public class HomePagePF {
 		WebDriver driver;
+		public static final String pageTitle = "Salesforce - Enterprise Edition";
 		public HomePagePF(WebDriver lDriver) {
 			this.driver = lDriver;
 		}
@@ -26,6 +27,6 @@ public class HomePagePF {
 		}
 		
 		public void verifyHomePageTitle() {
-			Assert.assertEquals(driver.getTitle(), "Salesforce - Enterprise Edition", "Possible defect - Home page title mismatch.");
+			Assert.assertEquals(driver.getTitle(), pageTitle, "Possible defect - Home page title mismatch.");
 		}
 }
