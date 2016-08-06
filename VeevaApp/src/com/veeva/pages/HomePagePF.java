@@ -20,13 +20,22 @@ public class HomePagePF {
 			this.driver = lDriver;
 		}
 		
-		@FindBy(how = How.XPATH, using=".//a[@title = 'My Accounts Tab']") private WebElement accountMenu; 
-		
-		public void myAccountsMenu() {
-			accountMenu.click();
-		}
+		@FindBy(how = How.XPATH, using=".//a[@title = 'My Accounts Tab']") private WebElement accountMenu;
+		@FindBy(how = How.XPATH, using = ".//a[@title = 'Medical Inquiries Tab']") private WebElement MedInquiry;
 		
 		public void verifyHomePageTitle() {
 			Assert.assertEquals(driver.getTitle(), pageTitle, "Possible defect - Home page title mismatch.");
+		}
+		
+		public void menuItem(String item) {
+			if(item.equalsIgnoreCase("My Accounts")) {
+				accountMenu.click();
+			}
+			else if(item.equalsIgnoreCase("Medical Inquiries")) {
+				MedInquiry.click();
+			}
+			else {
+				System.out.println("Possible Defect - Not a valid menu item.");
+			}
 		}
 }

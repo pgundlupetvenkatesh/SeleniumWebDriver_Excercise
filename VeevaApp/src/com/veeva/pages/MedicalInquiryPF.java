@@ -1,0 +1,85 @@
+/**
+ * 
+ */
+package com.veeva.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.Select;
+
+/**
+ * @author Pratik
+ *
+ */
+public class MedicalInquiryPF {
+	WebDriver driver;
+	public MedicalInquiryPF(WebDriver lDriver) {
+		this.driver = lDriver;
+	}
+	
+	@FindBy(how = How.XPATH, using = ".//input[@title='New' and @value=' New ']") private WebElement newButton;
+	@FindBy(how = How.ID, using = "p3") private WebElement recordType;
+	@FindBy(how = How.XPATH, using = ".//input[@title='Continue']") private WebElement continueButton;
+	@FindBy(how = How.ID, using = "reqi-value:reference:Medical_Inquiry_vod__c:Account_vod__c") private WebElement infoAccount;
+	@FindBy(how = How.ID, using = "reqi-value:picklist:Medical_Inquiry_vod__c:Source__c") private WebElement infoSource;
+	@FindBy(how = How.ID, using = "dt_reqi-value:datetime:Medical_Inquiry_vod__c:Request_Date_TVA__c") private WebElement infoReqDate;
+	@FindBy(how = How.ID, using = "tm_reqi-value:datetime:Medical_Inquiry_vod__c:Request_Date_TVA__c") private WebElement infoReqTime;
+	@FindBy(how = How.ID, using = "reqi-value:picklist:Medical_Inquiry_vod__c:Delivery_Method_vod__c") private WebElement priLocation;
+	@FindBy(how = How.ID, using = "reqi-value:picklist:Medical_Inquiry_vod__c:Product__c") private WebElement inqProduct;
+	@FindBy(how = How.ID, using = "reqi-value:textarea:Medical_Inquiry_vod__c:Inquiry_Text__c") private WebElement inqText;
+	@FindBy(how = How.ID, using = "pbButtonTableColSubmitBottom") private WebElement submitButton;
+
+	public void ButtonClick(String item) {
+		if(item.equalsIgnoreCase("New")) {
+			newButton.click();
+		}
+		else if(item.equalsIgnoreCase("Continue")) {
+			continueButton.click();
+		}
+		else if(item.equalsIgnoreCase("Submit")) {
+			submitButton.click();
+		}
+		else {
+			System.out.println("Possible Defect - Button name not in the page.");
+		}
+	}
+	
+	public void medInquiryRecordType(String recType) {
+		Select recTypeID = new Select(recordType);
+		recTypeID.selectByVisibleText(recType);
+	}
+	
+	public void setInfoAccount(String acc) {
+		infoAccount.clear();
+		infoAccount.sendKeys(acc);
+	}
+	
+	public void setInfoSource(String src) {
+		Select srcText = new Select(infoSource);
+		srcText.selectByVisibleText(src);
+	}
+	
+	public void setReqDateTime(String date, String time) {
+		Select reqTime = new Select(infoReqTime);
+		reqTime.selectByVisibleText(time);
+		infoReqDate.clear();
+		infoReqDate.sendKeys(date);
+	}
+	
+	public void setLocation(String priLoc) {
+		Select loc = new Select(priLocation);
+		loc.selectByVisibleText(priLoc);
+	}
+	
+	public void setInqProduct(String pro) {
+		Select product = new Select(inqProduct);
+		product.selectByVisibleText(pro);
+	}
+	
+	public void setInqText(String text) {
+		inqText.clear();
+		inqText.sendKeys(text);
+	}
+}

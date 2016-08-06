@@ -20,14 +20,14 @@ public class SaveCallReport extends SetUpTearDown  {
 	@Test
 	public void login() {
 		LoginPagePF obj = PageFactory.initElements(driver, LoginPagePF.class);
-		obj.loginToapp("*****", "****");
+		obj.loginToapp("****", "****");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
 	@Test (dependsOnMethods={"login"})
 	public void homePage() {
 		HomePagePF homeObj = PageFactory.initElements(driver, HomePagePF.class);
-		homeObj.myAccountsMenu();			//Clicking the My Account tab
+		homeObj.menuItem("My Accounts");	//Clicking the My Accounts menu item
 		homeObj.verifyHomePageTitle();
 	}
 	
