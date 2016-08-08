@@ -1,9 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Call_Report" verbose="1" >
-  <test name="Save_Call_Report" >
-    <classes>
-       <class name="CallReport.SaveCallReport" />
-       <!-- <class name="CallReport.SetUpTearDown" /> -->
-    </classes>
-  </test>
+	<test name="Save_Call_Report" >
+		<classes>
+			<class name="CallReport.SaveCallReport" />
+			<class name="CallReport.MedicalInquiry" />
+		</classes>
+	</test>
+</suite>

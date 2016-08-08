@@ -5,13 +5,13 @@
     <classes>
       <class name="CallReport.SaveCallReport">
         <methods>
-          <include name="initializeBrowser"/>
           <include name="InvokeUrl"/>
           <include name="accountHolder"/>
           <include name="login"/>
           <include name="logout"/>
-          <include name="homePage"/>
           <include name="Exit"/>
+          <include name="homePage"/>
+          <include name="initializeBrowser"/>
           <include name="saveCallRreport"/>
         </methods>
       </class> <!-- CallReport.SaveCallReport -->

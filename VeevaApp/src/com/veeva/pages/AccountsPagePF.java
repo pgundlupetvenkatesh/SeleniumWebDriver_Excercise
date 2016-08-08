@@ -18,7 +18,7 @@ public class AccountsPagePF {
 			this.driver = lDriver;
 		}
 		
-		@FindBy(how = How.XPATH, using = ".//a[@class = 'personaccountMru']") private WebElement accountName;
+		@FindBy(how = How.XPATH, using = ".//*[@id='mru001U000000kOv0z']/a[@class = 'personaccountMru']") private WebElement accountName;
 		@FindBy(how = How.NAME, using = "record_a_call") private WebElement record_call; 
 		
 		public void accountName() {

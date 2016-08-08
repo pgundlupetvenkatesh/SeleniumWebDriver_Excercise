@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 /**
  * @author Pratik
@@ -15,6 +16,7 @@ import org.openqa.selenium.support.ui.Select;
  */
 public class MedicalInquiryPF {
 	WebDriver driver;
+	String medInqPageTitle = "Medical Inquiries: Home ~ Salesforce - Enterprise Edition";
 	public MedicalInquiryPF(WebDriver lDriver) {
 		this.driver = lDriver;
 	}
@@ -27,9 +29,14 @@ public class MedicalInquiryPF {
 	@FindBy(how = How.ID, using = "dt_reqi-value:datetime:Medical_Inquiry_vod__c:Request_Date_TVA__c") private WebElement infoReqDate;
 	@FindBy(how = How.ID, using = "tm_reqi-value:datetime:Medical_Inquiry_vod__c:Request_Date_TVA__c") private WebElement infoReqTime;
 	@FindBy(how = How.ID, using = "reqi-value:picklist:Medical_Inquiry_vod__c:Delivery_Method_vod__c") private WebElement priLocation;
+	@FindBy(how = How.ID, using = "AddrSelect") private WebElement address;
 	@FindBy(how = How.ID, using = "reqi-value:picklist:Medical_Inquiry_vod__c:Product__c") private WebElement inqProduct;
 	@FindBy(how = How.ID, using = "reqi-value:textarea:Medical_Inquiry_vod__c:Inquiry_Text__c") private WebElement inqText;
 	@FindBy(how = How.ID, using = "pbButtonTableColSubmitBottom") private WebElement submitButton;
+	
+	public void verifyMedInquiryPageTitle() {
+		Assert.assertEquals(driver.getTitle(), medInqPageTitle, "Possible defect - Medical Inquiry page title mismatch.");
+	}
 
 	public void ButtonClick(String item) {
 		if(item.equalsIgnoreCase("New")) {
@@ -81,5 +88,10 @@ public class MedicalInquiryPF {
 	public void setInqText(String text) {
 		inqText.clear();
 		inqText.sendKeys(text);
+	}
+	
+	public void setAddress(String addr) {
+		Select addrs = new Select(address);
+		addrs.selectByVisibleText(addr);
 	}
 }
