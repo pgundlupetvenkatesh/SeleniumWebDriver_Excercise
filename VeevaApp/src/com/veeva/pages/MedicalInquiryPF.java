@@ -3,11 +3,17 @@
  */
 package com.veeva.pages;
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 /**
@@ -21,9 +27,10 @@ public class MedicalInquiryPF {
 		this.driver = lDriver;
 	}
 	
-	@FindBy(how = How.XPATH, using = ".//input[@title='New' and @value=' New ']") private WebElement newButton;
+	@FindBy(how = How.NAME, using = "new") private WebElement newButton;
 	@FindBy(how = How.ID, using = "p3") private WebElement recordType;
 	@FindBy(how = How.XPATH, using = ".//input[@title='Continue']") private WebElement continueButton;
+	@FindBy(how = How.ID, using = "bPageBlocksecondaryPalette") private WebElement medInqSection;
 	@FindBy(how = How.ID, using = "reqi-value:reference:Medical_Inquiry_vod__c:Account_vod__c") private WebElement infoAccount;
 	@FindBy(how = How.ID, using = "reqi-value:picklist:Medical_Inquiry_vod__c:Source__c") private WebElement infoSource;
 	@FindBy(how = How.ID, using = "dt_reqi-value:datetime:Medical_Inquiry_vod__c:Request_Date_TVA__c") private WebElement infoReqDate;
@@ -33,9 +40,19 @@ public class MedicalInquiryPF {
 	@FindBy(how = How.ID, using = "reqi-value:picklist:Medical_Inquiry_vod__c:Product__c") private WebElement inqProduct;
 	@FindBy(how = How.ID, using = "reqi-value:textarea:Medical_Inquiry_vod__c:Inquiry_Text__c") private WebElement inqText;
 	@FindBy(how = How.ID, using = "pbButtonTableColSubmitBottom") private WebElement submitButton;
+	@FindBy(how = How.ID, using = "errorDiv") private WebElement mainValidationMessage;
+	@FindBy(how = How.ID, using = "datePicker") WebElement datePicker;
 	
 	public void verifyMedInquiryPageTitle() {
 		Assert.assertEquals(driver.getTitle(), medInqPageTitle, "Possible defect - Medical Inquiry page title mismatch.");
+	}
+	
+	public void validationMessage() {
+		Assert.assertEquals(mainValidationMessage.getText(), "Error: Invalid Data.", "Possible defect - required field validation message not shown.");
+	}
+	
+	public void sectionCheck() {
+		System.out.println("Medical Inquiry Section - " + medInqSection);
 	}
 
 	public void ButtonClick(String item) {
@@ -58,9 +75,11 @@ public class MedicalInquiryPF {
 		recTypeID.selectByVisibleText(recType);
 	}
 	
-	public void setInfoAccount(String acc) {
+	public void setInfoAccount(String accName) {
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(infoAccount));
 		infoAccount.clear();
-		infoAccount.sendKeys(acc);
+		infoAccount.sendKeys(accName);
 	}
 	
 	public void setInfoSource(String src) {
@@ -68,10 +87,13 @@ public class MedicalInquiryPF {
 		srcText.selectByVisibleText(src);
 	}
 	
-	public void setReqDateTime(String date, String time) {
+	public void setReqTime(String time) {
 		Select reqTime = new Select(infoReqTime);
 		reqTime.selectByVisibleText(time);
-		infoReqDate.clear();
+	}
+	
+	public void setReqDate(String date) {
+		infoReqDate.click();
 		infoReqDate.sendKeys(date);
 	}
 	
