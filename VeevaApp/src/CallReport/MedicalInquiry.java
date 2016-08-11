@@ -3,11 +3,8 @@
  */
 package CallReport;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
@@ -49,17 +46,19 @@ public class MedicalInquiry extends SetUpTearDown {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.switchTo().frame("itarget");
 		medInqObj.ButtonClick("Submit");
-		medInqObj.validationMessage();
+		medInqObj.validationChecks();
 		medInqObj.setInfoAccount("James Scales");
-		medInqObj.setInfoSource("E-MIRF-CSP");
+		//medInqObj.setInfoSource("E-MIRF-Convention");
 		medInqObj.setReqDate("8/9/2016");
 		medInqObj.setReqTime("7:00 AM");
 		medInqObj.setLocation("Select Address");
 		medInqObj.setAddress("10 Buist Rd, Bldg 2, Milford, PA 18337");
 		medInqObj.setInqProduct("Granix");
 		medInqObj.setInqText("Inquiry Text.");
-		driver.switchTo().defaultContent();
+		medInqObj.setInfoSource("E-MIRF-CSP");
 		medInqObj.ButtonClick("Submit");
+		driver.switchTo().defaultContent();
+		Thread.sleep(3000);
 	}
 	
 	@Test(dependsOnMethods={"newMedicalInq"}, description = "Logging out from application")

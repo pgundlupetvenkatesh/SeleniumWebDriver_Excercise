@@ -3,10 +3,6 @@
  */
 package com.veeva.pages;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,6 +19,8 @@ import org.testng.Assert;
 public class MedicalInquiryPF {
 	WebDriver driver;
 	String medInqPageTitle = "Medical Inquiries: Home ~ Salesforce - Enterprise Edition";
+	String validationMessageHeader = "Error: Invalid Data.";
+	String validationMsg = "Error: You must enter a value";
 	public MedicalInquiryPF(WebDriver lDriver) {
 		this.driver = lDriver;
 	}
@@ -41,14 +39,27 @@ public class MedicalInquiryPF {
 	@FindBy(how = How.ID, using = "reqi-value:textarea:Medical_Inquiry_vod__c:Inquiry_Text__c") private WebElement inqText;
 	@FindBy(how = How.ID, using = "pbButtonTableColSubmitBottom") private WebElement submitButton;
 	@FindBy(how = How.ID, using = "errorDiv") private WebElement mainValidationMessage;
+	@FindBy(how = How.ID, using = "errreqi-value:reference:Medical_Inquiry_vod__c:Account_vod__c_reqdiv") private WebElement accValidation;
+	@FindBy(how = How.ID, using = "errreqi-value:picklist:Medical_Inquiry_vod__c:Source__c_reqdiv") private WebElement srcValidation;
+	@FindBy(how = How.ID, using = "errreqi-value:datetime:Medical_Inquiry_vod__c:Request_Date_TVA__c_reqdiv") private WebElement dateTimeValidation;
+	@FindBy(how = How.ID, using = "errreqi-value:picklist:Medical_Inquiry_vod__c:Delivery_Method_vod__c_reqdiv") private WebElement locValidation;
+	@FindBy(how = How.ID, using = "errreqi-value:picklist:Medical_Inquiry_vod__c:Product__c_reqdiv") private WebElement prdValidation;
+	@FindBy(how = How.ID, using = "errreqi-value:textarea:Medical_Inquiry_vod__c:Inquiry_Text__c_reqdiv") private WebElement txtValidation;
+	
 	@FindBy(how = How.ID, using = "datePicker") WebElement datePicker;
 	
 	public void verifyMedInquiryPageTitle() {
 		Assert.assertEquals(driver.getTitle(), medInqPageTitle, "Possible defect - Medical Inquiry page title mismatch.");
 	}
 	
-	public void validationMessage() {
-		Assert.assertEquals(mainValidationMessage.getText(), "Error: Invalid Data.", "Possible defect - required field validation message not shown.");
+	public void validationChecks() {
+		Assert.assertEquals(mainValidationMessage.getText(), validationMessageHeader, "Possible defect - Main validation message discrepancy.");
+		Assert.assertEquals(accValidation.getText(), validationMsg, "Possible defect - Account field validation discrepancy.");
+		Assert.assertEquals(srcValidation.getText(), validationMsg, "Possible defect - Source field validation discrepancy.");
+		Assert.assertEquals(dateTimeValidation.getText(), validationMsg, "Possible defect - Date or Time field validation discrepancy.");
+		//Assert.assertEquals(locValidation.getText(), validationMsg, "Possible defect - Location field validation discrepancy.");
+		Assert.assertEquals(prdValidation.getText(), validationMsg, "Possible defect - Product field validation discrepancy.");
+		Assert.assertEquals(txtValidation.getText(), validationMsg, "Possible defect - Inquiry Text field validation discrepancy.");
 	}
 	
 	public void sectionCheck() {
@@ -93,6 +104,8 @@ public class MedicalInquiryPF {
 	}
 	
 	public void setReqDate(String date) {
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(infoAccount));
 		infoReqDate.click();
 		infoReqDate.sendKeys(date);
 	}
