@@ -3,6 +3,10 @@
  */
 package com.veeva.pages;
 
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,6 +34,7 @@ public class MedicalInquiryPF {
 	@FindBy(how = How.XPATH, using = ".//input[@title='Continue']") private WebElement continueButton;
 	@FindBy(how = How.ID, using = "bPageBlocksecondaryPalette") private WebElement medInqSection;
 	@FindBy(how = How.ID, using = "reqi-value:reference:Medical_Inquiry_vod__c:Account_vod__c") private WebElement infoAccount;
+	@FindBy(how = How.XPATH, using = "//a[@id='A1']/img[@title = 'Lookup (New Window)']") private WebElement infoAccountLookup;
 	@FindBy(how = How.ID, using = "reqi-value:picklist:Medical_Inquiry_vod__c:Source__c") private WebElement infoSource;
 	@FindBy(how = How.ID, using = "dt_reqi-value:datetime:Medical_Inquiry_vod__c:Request_Date_TVA__c") private WebElement infoReqDate;
 	@FindBy(how = How.ID, using = "tm_reqi-value:datetime:Medical_Inquiry_vod__c:Request_Date_TVA__c") private WebElement infoReqTime;
@@ -44,8 +49,7 @@ public class MedicalInquiryPF {
 	@FindBy(how = How.ID, using = "errreqi-value:datetime:Medical_Inquiry_vod__c:Request_Date_TVA__c_reqdiv") private WebElement dateTimeValidation;
 	@FindBy(how = How.ID, using = "errreqi-value:picklist:Medical_Inquiry_vod__c:Delivery_Method_vod__c_reqdiv") private WebElement locValidation;
 	@FindBy(how = How.ID, using = "errreqi-value:picklist:Medical_Inquiry_vod__c:Product__c_reqdiv") private WebElement prdValidation;
-	@FindBy(how = How.ID, using = "errreqi-value:textarea:Medical_Inquiry_vod__c:Inquiry_Text__c_reqdiv") private WebElement txtValidation;
-	
+	@FindBy(how = How.ID, using = "errreqi-value:textarea:Medical_Inquiry_vod__c:Inquiry_Text__c_reqdiv") private WebElement txtValidation;	
 	@FindBy(how = How.ID, using = "datePicker") WebElement datePicker;
 	
 	public void verifyMedInquiryPageTitle() {
@@ -91,6 +95,35 @@ public class MedicalInquiryPF {
 		wait.until(ExpectedConditions.visibilityOf(infoAccount));
 		infoAccount.clear();
 		infoAccount.sendKeys(accName);
+	}
+	
+	public void setInfoAccountLookup(String name) {
+		String accName;
+		String parent = driver.getWindowHandle();
+		infoAccountLookup.click();
+		Set<String> handles = driver.getWindowHandles();
+		Iterator<String> it = handles.iterator();
+		while(it.hasNext()) {
+			String child = it.next();
+			if(!child.equalsIgnoreCase(parent)) {
+				driver.switchTo().window(child);
+				driver.switchTo().frame("frameResult");
+				int rowCount = driver.findElements(By.xpath(".//table[@id = 'listTableId']/tbody/tr")).size();
+				//System.out.println(rowCount);
+				for(int i = 1; i<rowCount; i++) {
+					accName = driver.findElement(By.xpath(".//table[@id = 'listTableId']/tbody/tr["+ i +"]/th")).getText();
+					//System.out.println("Account Name - " + accName);
+					if(accName.equals(name)) {
+						driver.findElement(By.xpath(".//table[@id = 'listTableId']/tbody/tr["+ i +"]/th/a[contains(text(), '"+ name + "')]")).click();
+						break;
+					}
+				}
+				//driver.findElement(By.id("search0AFREF")).click();
+				//driver.switchTo().defaultContent();
+				//driver.close();
+			}
+		}
+		driver.switchTo().window(parent);
 	}
 	
 	public void setInfoSource(String src) {

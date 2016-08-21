@@ -47,8 +47,9 @@ public class MedicalInquiry extends SetUpTearDown {
 		driver.switchTo().frame("itarget");
 		medInqObj.ButtonClick("Submit");
 		medInqObj.validationChecks();
-		medInqObj.setInfoAccount("James Scales");
-		//medInqObj.setInfoSource("E-MIRF-Convention");
+		medInqObj.setInfoSource("E-MIRF-Convention");
+		medInqObj.setInfoAccountLookup("James Scales");
+		driver.switchTo().frame("itarget");
 		medInqObj.setReqDate("8/9/2016");
 		medInqObj.setReqTime("7:00 AM");
 		medInqObj.setLocation("Select Address");
@@ -58,7 +59,6 @@ public class MedicalInquiry extends SetUpTearDown {
 		medInqObj.setInfoSource("E-MIRF-CSP");
 		medInqObj.ButtonClick("Submit");
 		driver.switchTo().defaultContent();
-		Thread.sleep(3000);
 	}
 	
 	@Test(dependsOnMethods={"newMedicalInq"}, description = "Logging out from application")
