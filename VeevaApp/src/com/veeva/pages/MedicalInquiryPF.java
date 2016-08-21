@@ -4,6 +4,7 @@
 package com.veeva.pages;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import org.openqa.selenium.By;
@@ -51,6 +52,8 @@ public class MedicalInquiryPF {
 	@FindBy(how = How.ID, using = "errreqi-value:picklist:Medical_Inquiry_vod__c:Product__c_reqdiv") private WebElement prdValidation;
 	@FindBy(how = How.ID, using = "errreqi-value:textarea:Medical_Inquiry_vod__c:Inquiry_Text__c_reqdiv") private WebElement txtValidation;	
 	@FindBy(how = How.ID, using = "datePicker") WebElement datePicker;
+	
+	@FindBy(how = How.XPATH, using = ".//table[@id = 'listTableId']/tbody/tr") private List<WebElement> NumOfAcc;
 	
 	public void verifyMedInquiryPageTitle() {
 		Assert.assertEquals(driver.getTitle(), medInqPageTitle, "Possible defect - Medical Inquiry page title mismatch.");
@@ -108,13 +111,11 @@ public class MedicalInquiryPF {
 			if(!child.equalsIgnoreCase(parent)) {
 				driver.switchTo().window(child);
 				driver.switchTo().frame("frameResult");
-				int rowCount = driver.findElements(By.xpath(".//table[@id = 'listTableId']/tbody/tr")).size();
-				//System.out.println(rowCount);
+				int rowCount = NumOfAcc.size();
 				for(int i = 1; i<rowCount; i++) {
 					accName = driver.findElement(By.xpath(".//table[@id = 'listTableId']/tbody/tr["+ i +"]/th")).getText();
-					//System.out.println("Account Name - " + accName);
 					if(accName.equals(name)) {
-						driver.findElement(By.xpath(".//table[@id = 'listTableId']/tbody/tr["+ i +"]/th/a[contains(text(), '"+ name + "')]")).click();
+						driver.findElement(By.xpath(".//table[@id = 'listTableId']/tbody/tr["+ i +"]/th/a[contains(text(), '" + name + "')]")).click();
 						break;
 					}
 				}
