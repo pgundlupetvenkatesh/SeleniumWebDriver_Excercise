@@ -115,7 +115,8 @@ public class MedicalInquiryPF {
 				for(int i = 1; i<rowCount; i++) {
 					accName = driver.findElement(By.xpath(".//table[@id = 'listTableId']/tbody/tr["+ i +"]/th")).getText();
 					if(accName.equals(name)) {
-						driver.findElement(By.xpath(".//table[@id = 'listTableId']/tbody/tr["+ i +"]/th/a[contains(text(), '" + name + "')]")).click();
+						//driver.findElement(By.xpath(".//table[@id = 'listTableId']/tbody/tr["+ i +"]/th/a[contains(text(), '" + name + "')]")).click();
+						driver.findElement(By.xpath(".//table[@id = 'listTableId']/tbody/tr["+ i +"]/th/a")).click();
 						break;
 					}
 				}

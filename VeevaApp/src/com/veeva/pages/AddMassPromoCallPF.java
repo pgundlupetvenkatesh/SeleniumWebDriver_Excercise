@@ -9,7 +9,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author Pratik
@@ -72,6 +74,7 @@ public class AddMassPromoCallPF {
 				dropdownText = product_dropdown_1.getText();
 			}
 			if(product.equalsIgnoreCase("Labrinone")) {
+				new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(product_dropdown_2));
 				dropdownText = product_dropdown_2.getText();
 			}
 			return dropdownText;

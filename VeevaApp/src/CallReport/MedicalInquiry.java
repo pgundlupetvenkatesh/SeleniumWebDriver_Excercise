@@ -27,7 +27,7 @@ public class MedicalInquiry extends Login {
 	}
 	
 	@Test(dependsOnMethods={"MedInqHomePage"})
-	public void newMedicalInq() throws Exception {
+	public void newMedicalInq() {
 		MedicalInquiryPF medInqObj = PageFactory.initElements(driver, MedicalInquiryPF.class);
 		medInqObj.ButtonClick("New");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

@@ -31,7 +31,7 @@ public class SaveCallReport extends Login  {
 	public void saveCallRreport() throws InterruptedException {			//This function creates a new call report
 		AddMassPromoCallPF promoCallObj = PageFactory.initElements(driver, AddMassPromoCallPF.class);
 		promoCallObj.recordType("Mass Add Promo Call");
-		Thread.sleep(20000);
+		//Thread.sleep(20000);
 		String checkBox1 = promoCallObj.checkboxDetails("Cholecap");	//click Cholecap & Labrinone check-box
 		String checkBox2 = promoCallObj.checkboxDetails("Labrinone");
 /*		String product1 = promoCallObj.productDropdown("Cholecap");		//To get the text for 1st product drop-down value
