@@ -3,6 +3,8 @@
  */
 package CallReport;
 
+import helper.HelperFunctions;
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.support.PageFactory;
@@ -47,6 +49,7 @@ public class MedicalInquiry extends Login {
 		medInqObj.setInqProduct("Granix");
 		medInqObj.setInqText("Inquiry Text.");
 		medInqObj.setInfoSource("E-MIRF-CSP");
+		HelperFunctions.screenShot(driver, "beforeSubmit");
 		medInqObj.ButtonClick("Submit");
 		driver.switchTo().defaultContent();
 	}
