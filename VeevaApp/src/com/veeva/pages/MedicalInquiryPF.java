@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 /**
  * @author Pratik
@@ -55,18 +56,24 @@ public class MedicalInquiryPF {
 	
 	@FindBy(how = How.XPATH, using = ".//table[@id = 'listTableId']/tbody/tr") private List<WebElement> NumOfAcc;
 	
+	public void explicitWait(WebElement element, long secs) {
+		WebDriverWait wait = new WebDriverWait(driver, secs);
+		wait.until(ExpectedConditions.visibilityOf(infoAccount));
+	}
+	
 	public void verifyMedInquiryPageTitle() {
 		Assert.assertEquals(driver.getTitle(), medInqPageTitle, "Possible defect - Medical Inquiry page title mismatch.");
 	}
 	
 	public void validationChecks() {
-		Assert.assertEquals(mainValidationMessage.getText(), validationMessageHeader, "Possible defect - Main validation message discrepancy.");
-		Assert.assertEquals(accValidation.getText(), validationMsg, "Possible defect - Account field validation discrepancy.");
-		Assert.assertEquals(srcValidation.getText(), validationMsg, "Possible defect - Source field validation discrepancy.");
-		Assert.assertEquals(dateTimeValidation.getText(), validationMsg, "Possible defect - Date or Time field validation discrepancy.");
-		//Assert.assertEquals(locValidation.getText(), validationMsg, "Possible defect - Location field validation discrepancy.");
-		Assert.assertEquals(prdValidation.getText(), validationMsg, "Possible defect - Product field validation discrepancy.");
-		Assert.assertEquals(txtValidation.getText(), validationMsg, "Possible defect - Inquiry Text field validation discrepancy.");
+		SoftAssert assertion = new SoftAssert();
+		assertion.assertEquals(mainValidationMessage.getText(), validationMessageHeader, "Possible defect - Main validation message discrepancy.");
+		assertion.assertEquals(accValidation.getText(), validationMsg, "Possible defect - Account field validation discrepancy.");
+		assertion.assertEquals(srcValidation.getText(), validationMsg, "Possible defect - Source field validation discrepancy.");
+		assertion.assertEquals(dateTimeValidation.getText(), validationMsg, "Possible defect - Date or Time field validation discrepancy.");
+		assertion.assertEquals(prdValidation.getText(), validationMsg, "Possible defect - Product field validation discrepancy.");
+		assertion.assertEquals(txtValidation.getText(), validationMsg, "Possible defect - Inquiry Text field validation discrepancy.");
+		assertion.assertAll();
 	}
 	
 	public void sectionCheck() {
@@ -102,6 +109,7 @@ public class MedicalInquiryPF {
 	
 	public void setInfoAccountLookup(String name) {
 		String accName;
+		int rowCount = NumOfAcc.size();
 		String parent = driver.getWindowHandle();
 		infoAccountLookup.click();
 		Set<String> handles = driver.getWindowHandles();
@@ -111,14 +119,18 @@ public class MedicalInquiryPF {
 			if(!child.equalsIgnoreCase(parent)) {
 				driver.switchTo().window(child);
 				driver.switchTo().frame("frameResult");
-				int rowCount = NumOfAcc.size();
-				for(int i = 1; i<rowCount; i++) {
-					accName = driver.findElement(By.xpath(".//table[@id = 'listTableId']/tbody/tr["+ i +"]/th")).getText();
-					if(accName.equals(name)) {
-						//driver.findElement(By.xpath(".//table[@id = 'listTableId']/tbody/tr["+ i +"]/th/a[contains(text(), '" + name + "')]")).click();
-						driver.findElement(By.xpath(".//table[@id = 'listTableId']/tbody/tr["+ i +"]/th/a")).click();
-						break;
+				try {
+					for(int i = 1; i<rowCount; i++) {
+						accName = driver.findElement(By.xpath(".//table[@id = 'listTableId']/tbody/tr["+ i +"]/th")).getText();
+						if(accName.equals(name)) {
+							//driver.findElement(By.xpath(".//table[@id = 'listTableId']/tbody/tr["+ i +"]/th/a[contains(text(), '" + name + "')]")).click();
+							driver.findElement(By.xpath(".//table[@id = 'listTableId']/tbody/tr["+ i +"]/th/a")).click();
+							break;
+						}
 					}
+				}
+				catch (Exception e) {
+					System.out.println("Account name xpath - " + e.getMessage());
 				}
 				//driver.findElement(By.id("search0AFREF")).click();
 				//driver.switchTo().defaultContent();
