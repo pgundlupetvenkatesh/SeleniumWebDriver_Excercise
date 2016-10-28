@@ -7,4 +7,9 @@
 			<class name="CallReport.MedicalInquiry" />
 		</classes>
 	</test>
+<!-- 	<test name="Medical_Inquiry">
+		<classes>
+			<class name="CallReport.MedicalInquiry" />
+		</classes>
+	</test> -->
 </suite>

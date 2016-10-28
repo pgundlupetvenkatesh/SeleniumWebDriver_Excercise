@@ -5,6 +5,7 @@ package com.veeva.pages;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,10 +32,25 @@ public class AddMassPromoCallPF {
 		@FindBy(how = How.XPATH, using = ".//label[@for='chkda00U000000W2Bg4IAF_a00U0000006DoZNIA0']") WebElement labrinone_checkbox_name;
 		@FindBy(how = How.XPATH, using = ".//input[@ng-change='quantityChanged(row)']") WebElement quantity;
 		@FindBy(how = How.XPATH, using = ".//td[@id='bottomButtonRow']/span[1]/input[@title='Save']") WebElement save_button;
-		@FindBy(how = How.XPATH, using = "//span/select[@ng-model='discussion.Product_vod__c']/option[2][@selected='selected']") WebElement product_dropdown_1;
-		@FindBy(how = How.XPATH, using = "//span/select[@ng-model='discussion.Product_vod__c']/option[3][@selected='selected']") WebElement product_dropdown_2;
+		@FindBy(how = How.XPATH, using = "//span/select[@class='ng-pristine ng-untouched ng-valid']/option[2][@selected='selected']") WebElement product_dropdown_1;
+		@FindBy(how = How.XPATH, using = "//span/select[@class='ng-pristine ng-untouched ng-valid']/option[3][@selected='selected']") WebElement product_dropdown_2;
 		@FindBy(how = How.XPATH, using = ".//div[@ng-init='initDiscussion(discussion)']") List<WebElement> call_discussion_section;
 		@FindBy(how = How.XPATH, using = ".//span[@ng-if='!editable']") List<WebElement> saved_status;
+		
+		//Used for Explicit waits as FinBy were a bit tricky to handle, working on it though!!!
+		By by_record_type = By.id("RecordTypeId");
+		By cholecap = By.id("chkd_a00U0000006DoZJIA0");
+		
+		public void explicitWait(long secs, By elementName) {
+			WebDriverWait wait = new WebDriverWait(driver, secs);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(elementName));	//waits until div main_section loads
+		}
+		
+		//Explicit wait for a page section to load. I would use this function when I load the page a the start so that the div sections load.
+		public void explicitWait(long secs) {
+			WebDriverWait wait = new WebDriverWait(driver, secs);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("veeva-app")));	//waits until div main_section loads
+		}
 		
 		public void recordType(String recType) {
 			Select recordTypeID = new Select (record_type);
@@ -57,6 +73,7 @@ public class AddMassPromoCallPF {
 		
 		public String checkboxDetails(String str) {
 			String checkBoxText = null;
+			explicitWait(60, cholecap);	//Waits till the element displays and the max. wait time is 60 secs.
 			if(str.equalsIgnoreCase("Cholecap")) {
 				cholecap_checkbox.click();
 				checkBoxText = cholecap_checkbox_name.getText();

@@ -1,16 +1,13 @@
 package CallReport;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.veeva.pages.AccountsPagePF;
 import com.veeva.pages.AddMassPromoCallPF;
 import com.veeva.pages.HomePagePF;
-import com.veeva.pages.LogoutPF;
 
-//@Listeners(testngListner.TestNGListner.class)
 public class SaveCallReport extends Login  {
 	@Test (dependsOnMethods = {"login"})
 	public void homePage() {
@@ -24,31 +21,24 @@ public class SaveCallReport extends Login  {
 		AccountsPagePF accObj = PageFactory.initElements(driver, AccountsPagePF.class);
 		accObj.accountName();				//Clicking Mark Canter in the side window panel
 		accObj.action();					//Click on the Record a Call button.
-		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		accObj.explicitWait(80);
 	}
 	
 	@Test (dependsOnMethods={"accountHolder"})
 	public void saveCallRreport() throws InterruptedException {			//This function creates a new call report
 		AddMassPromoCallPF promoCallObj = PageFactory.initElements(driver, AddMassPromoCallPF.class);
 		promoCallObj.recordType("Mass Add Promo Call");
-		//Thread.sleep(20000);
+		promoCallObj.explicitWait(80);
 		String checkBox1 = promoCallObj.checkboxDetails("Cholecap");	//click Cholecap & Labrinone check-box
 		String checkBox2 = promoCallObj.checkboxDetails("Labrinone");
-/*		String product1 = promoCallObj.productDropdown("Cholecap");		//To get the text for 1st product drop-down value
-		String product2 = promoCallObj.productDropdown("Labrinone");	//To get the text for 2nd product drop-down value
-		Assert.assertEquals(promoCallObj.productsRowCount(), 2, "Possible defect - Product row count mismatch.");	//Get the count of the call Discussion sub-section
-		Assert.assertEquals(checkBox1, product1, "Possible defect - Cholecap product mismatch");
-		Assert.assertTrue(product2.contains(checkBox2), "Possible defect - Lebrinone product mismatch");
-*/		promoCallObj.samplePromoItem();		//Checking Restolar Video check-box
+		String product1 = promoCallObj.productDropdown("Cholecap");		//To get the text for 1st product drop-down value
+		String product2 = promoCallObj.productDropdown("Labrinone");	//To get the text for 2nd product drop-down value 
+		//Assert.assertEquals(promoCallObj.productsRowCount(), 2, "Possible defect - Product row count mismatch.");	//Get the count of the call Discussion sub-section
+		Assert.assertEquals(checkBox1, product2, "Possible defect - Cholecap product mismatch");
+		Assert.assertTrue(product1.contains(checkBox2), "Possible defect - Lebrinone product mismatch");
+		promoCallObj.samplePromoItem();		//Checking Restolar Video check-box
 		promoCallObj.quantity("2");
-/*		promoCallObj.clickSave();			//Saving a Call Report	
-		Thread.sleep(10000);
-		Assert.assertEquals(promoCallObj.callRepeortStatus(), "Saved", "Possible defect - Call Report is not saved.");*/
-	}
-	
-	@Test(dependsOnMethods={"saveCallRreport"}, description = "Logging out from application")
-	public void logout() {
-		LogoutPF logoutObj = PageFactory.initElements(driver, LogoutPF.class);
-		logoutObj.userLogout();
+		promoCallObj.clickSave();			//Saving a Call Report	
+		Assert.assertEquals(promoCallObj.callRepeortStatus(), "Saved", "Possible defect - Call Report is not saved.");
 	}
 }
