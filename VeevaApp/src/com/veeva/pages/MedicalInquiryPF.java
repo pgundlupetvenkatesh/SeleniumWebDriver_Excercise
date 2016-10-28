@@ -15,7 +15,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+//import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 /**
@@ -56,13 +56,16 @@ public class MedicalInquiryPF {
 	
 	@FindBy(how = How.XPATH, using = ".//table[@id = 'listTableId']/tbody/tr") private List<WebElement> NumOfAcc;
 	
-	public void explicitWait(WebElement element, long secs) {
+	public void explicitWait(long secs) {
 		WebDriverWait wait = new WebDriverWait(driver, secs);
 		wait.until(ExpectedConditions.visibilityOf(infoAccount));
 	}
 	
 	public void verifyMedInquiryPageTitle() {
-		Assert.assertEquals(driver.getTitle(), medInqPageTitle, "Possible defect - Medical Inquiry page title mismatch.");
+		SoftAssert assertion = new SoftAssert();
+		assertion.assertEquals(driver.getTitle(), medInqPageTitle, "Possible defect - Medical Inquiry page title mismatch.");
+		//Assert.assertEquals(driver.getTitle(), medInqPageTitle, "Possible defect - Medical Inquiry page title mismatch.");
+		assertion.assertAll();
 	}
 	
 	public void validationChecks() {

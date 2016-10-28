@@ -11,7 +11,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
 import com.veeva.pages.HomePagePF;
-import com.veeva.pages.LogoutPF;
 import com.veeva.pages.MedicalInquiryPF;
 
 /**
@@ -52,11 +51,5 @@ public class MedicalInquiry extends Login {
 		HelperFunctions.screenShot(driver, "beforeSubmit");
 		medInqObj.ButtonClick("Submit");
 		driver.switchTo().defaultContent();
-	}
-	
-	@Test(dependsOnMethods={"newMedicalInq"}, description = "Logging out from application")
-	public void logout() {
-		LogoutPF logoutObj = PageFactory.initElements(driver, LogoutPF.class);
-		logoutObj.userLogout();
 	}
 }
